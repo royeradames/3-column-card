@@ -21,29 +21,40 @@ const data = [
   },
 ];
 function App() {
-  const pickIcon = (brand: string) => {
+  const pickIconBackground = (brand: string) => {
     switch (brand) {
       case "Sedans":
-        return iconSedans;
+        return { icon: iconSedans, background: "card--sedans-background" };
       case "SUVs":
-        return iconSuvs;
+        return { icon: iconSuvs, background: "card--suvs-background" };
       case "Luxury":
-        return iconLuxury;
+        return { icon: iconLuxury, background: "card--luxury-background" };
       default:
-        return "brand not recognize";
+        return { icon: "Brand not found", background: "" };
     }
   };
+
   const card = (
     data: {
       brand: string;
       message: string;
     }[],
-    pickIcon: (brand: string) => string
+    pickIconBackground: (
+      brand: string
+    ) => {
+      icon: string;
+      background: string;
+    }
   ) => {
     return data.map((entry) => {
+      const brandData = pickIconBackground(entry.brand);
       return (
-        <article className="card">
-          <img src={pickIcon(entry.brand)} alt="" className="card__img" />
+        <article
+          className={`card ${
+            brandData?.background ? brandData.background : ""
+          }`}
+        >
+          <img src={brandData?.icon} alt="" className="card__img" />
           <h2 className="card__title">{entry.brand}</h2>
           <p className="card__message">{entry.message}</p>
           <button className="card__button">Learn More</button>
@@ -51,7 +62,7 @@ function App() {
       );
     });
   };
-  return <>{card(data, pickIcon)}</>;
+  return <>{card(data, pickIconBackground)}</>;
 }
 
 export default App;
