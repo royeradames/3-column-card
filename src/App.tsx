@@ -1,6 +1,8 @@
 import React from "react";
 import "./styles/_root.scss";
-
+import iconLuxury from "./images/icon-luxury.svg";
+import iconSedans from "./images/icon-sedans.svg";
+import iconSuvs from "./images/icon-suvs.svg";
 const data = [
   {
     brand: "Sedans",
@@ -19,7 +21,37 @@ const data = [
   },
 ];
 function App() {
-  return <></>;
+  const pickIcon = (brand: string) => {
+    switch (brand) {
+      case "Sedans":
+        return iconSedans;
+      case "SUVs":
+        return iconSuvs;
+      case "Luxury":
+        return iconLuxury;
+      default:
+        return "brand not recognize";
+    }
+  };
+  const card = (
+    data: {
+      brand: string;
+      message: string;
+    }[],
+    pickIcon: (brand: string) => string
+  ) => {
+    return data.map((entry) => {
+      return (
+        <article className="card">
+          <img src={pickIcon(entry.brand)} alt="" className="card__img" />
+          <h2 className="card__title">{entry.brand}</h2>
+          <p className="card__message">{entry.message}</p>
+          <button className="card__button">Learn More</button>
+        </article>
+      );
+    });
+  };
+  return <>{card(data, pickIcon)}</>;
 }
 
 export default App;
