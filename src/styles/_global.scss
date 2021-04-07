@@ -27,12 +27,14 @@ $gray-100: hsl(0, 0%, 95%);
     font-family: 'Lexend Deca', sans-serif;
     &--sedans-background{
         background-color: $orange-300;
+        border-radius: 1rem 1rem 0 0;
     }
     &--suvs-background{
         background-color: $cyan-700;
     }
     &--luxury-background{
         background-color: $cyan-900;
+        border-radius: 0 0 1rem 1rem;
     }
     &--sedans-color{
         color: $orange-300;
@@ -69,6 +71,33 @@ $gray-100: hsl(0, 0%, 95%);
             background-color: rgba(255, 255, 255, 0);
             border: solid .3rem $white-100;
             color: $white-100;
+        }
+    }
+}
+
+@media(min-width: 840px){
+    .card{
+        &--sedans-background{
+        border-radius: 1rem 0 0 0;
+        }
+        &--suvs-background{
+            border-radius: 0 1rem 1rem 0;;
+        }
+        &--luxury-background{
+            border-radius: 0 0 1rem 1rem;;
+        }
+    }
+}
+@media(min-width: 1240px){
+    .card{
+        &--sedans-background{
+        border-radius: 1rem 0 0 1rem;
+        }
+        &--suvs-background{
+            border-radius: initial;
+        }
+        &--luxury-background{
+            border-radius: 0 1rem 1rem 0;
         }
     }
 }
