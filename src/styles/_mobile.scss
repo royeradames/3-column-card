@@ -6,12 +6,25 @@ $white-100: hsla(0, 0%, 100%, 0.75);
 $gray-100: hsl(0, 0%, 95%);
 .page{
     font-size: 1.5rem;
+    margin: 10rem 2rem;
+    
     // layout 
     display: grid;
-    grid-template-columns: repeat(3, minmax(auto, 1fr));
-    // justify-content: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(29rem, 40rem));
+    align-content: center;
+    justify-content: center;
+    &--background{
+        background-color: $gray-100;
+        min-height: 100vh;
+
+        // layout: center cards
+        display: grid;
+    }
 }
 .card{
+    padding: 3rem;
+    // body font
+    font-family: 'Lexend Deca', sans-serif;
     &--sedans-background{
         background-color: $orange-300;
     }
@@ -21,18 +34,36 @@ $gray-100: hsl(0, 0%, 95%);
     &--luxury-background{
         background-color: $cyan-900;
     }
-    &__img{
-        
+    &--sedans-color{
+        color: $orange-300;
     }
+    &--suvs-color{
+        color: $cyan-700;
+    }
+    &--luxury-color{
+        color: $cyan-900;
+    }
+    
     &__title{
+        font-family: 'Big Shoulders Display', cursive;
+        color: $white-100;
+        font-size: 4rem;
+        text-transform: uppercase;
 
     }
     &__message{
         color: $gray-100;
-        // body font
-        font-family: 'Lexend Deca', sans-serif;
+        max-width: 26ch;
+        line-height: 1.6;
+        margin-bottom: clamp(4rem, 5.3vw, 8rem);
+        
     }
     &__button{
-
+        background: $white-100;
+        border: none;
+        border-radius: 5rem;
+        padding: 1.5rem 4rem;
+        font-family: 'Lexend Deca', sans-serif;
+        cursor: pointer;
     }
 }
