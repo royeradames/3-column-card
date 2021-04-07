@@ -24,13 +24,29 @@ function App() {
   const pickIconBackground = (brand: string) => {
     switch (brand) {
       case "Sedans":
-        return { icon: iconSedans, background: "card--sedans-background" };
+        return {
+          icon: iconSedans,
+          background: "card--sedans-background",
+          color: "card--sedans-color",
+        };
       case "SUVs":
-        return { icon: iconSuvs, background: "card--suvs-background" };
+        return {
+          icon: iconSuvs,
+          background: "card--suvs-background",
+          color: "card--suvs-color",
+        };
       case "Luxury":
-        return { icon: iconLuxury, background: "card--luxury-background" };
+        return {
+          icon: iconLuxury,
+          background: "card--luxury-background",
+          color: "card--luxury-color",
+        };
       default:
-        return { icon: "Brand not found", background: "" };
+        return {
+          icon: "Brand not found",
+          background: "",
+          color: "card--sedans-color",
+        };
     }
   };
 
@@ -44,6 +60,7 @@ function App() {
     ) => {
       icon: string;
       background: string;
+      color: string;
     }
   ) => {
     return data.map((entry) => {
@@ -57,7 +74,13 @@ function App() {
           <img src={brandData?.icon} alt="" className="card__img" />
           <h2 className="card__title">{entry.brand}</h2>
           <p className="card__message">{entry.message}</p>
-          <button className="card__button">Learn More</button>
+          <button
+            className={`card__button ${
+              brandData?.color ? brandData?.color : ""
+            }`}
+          >
+            Learn More
+          </button>
         </article>
       );
     });
