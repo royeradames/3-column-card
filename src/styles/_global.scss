@@ -75,6 +75,7 @@ $gray-100: hsl(0, 0%, 95%);
     }
 }
 
+// media queries are for adding rounded corner to the cards
 @media(min-width: 840px){
     .card{
         &--sedans-background{
